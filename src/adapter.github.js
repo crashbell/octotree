@@ -60,6 +60,16 @@ GitHub.prototype.selectPath = function(path, tabSize) {
 }
 
 /**
+ * Append sidebar to corresponding place
+ */
+GitHub.prototype.appendSidebar = function(sidebar) {
+  sidebar
+    .addClass('octotree_github_sidebar')
+    .appendTo($('body'))
+
+}
+
+/**
  * Updates page layout based on visibility status and width of the Octotree sidebar.
  */
 GitHub.prototype.updateLayout = function(sidebarVisible, sidebarWidth) {

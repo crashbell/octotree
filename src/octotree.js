@@ -26,11 +26,13 @@ $(document).ready(function() {
       , currRepo  = false
       , hasError  = false
 
+
     $sidebar
-      .appendTo($('body'))
       .width(parseFloat(store.get(STORE.WIDTH)))
       .resizable({ handles: 'e', minWidth: 200 })
       .resize(layoutChanged)
+      
+    adapter.appendSidebar($sidebar)
 
     $(window).resize(function(event) { // handle zoom
       if (event.target === window) layoutChanged()
@@ -93,7 +95,6 @@ $(document).ready(function() {
         , lazyload = store.get(STORE.LAZYLOAD)
         , token = store.get(STORE.TOKEN)
         , repo = adapter.getRepoFromPath(showInNonCodePage, currRepo)
-
       if (repo) {
         $toggler.show()
         helpPopup.show()
