@@ -18,7 +18,7 @@ $(document).ready(function() {
       , $sidebar  = $dom.find('.octotree_sidebar')
       , $toggler  = $sidebar.find('.octotree_toggle')
       , $views    = $sidebar.find('.octotree_view')
-      , adapter   = new GitHub()
+      , adapter   = adapterByOrigin()
       , optsView  = new OptionsView($dom, store)
       , helpPopup = new HelpPopup($dom, store)
       , treeView  = new TreeView($dom, store, adapter)
@@ -56,10 +56,10 @@ $(document).ready(function() {
 
     $document
       .on('pjax:send ' + EVENT.REQ_START, function() {
-        $toggler.addClass('loading')
+        $toggler.addClass('octotree_loading')
       })
       .on('pjax:end ' + EVENT.REQ_END, function() {
-        $toggler.removeClass('loading')
+        $toggler.removeClass('octotree_loading')
       })
       .on('pjax:timeout', function(event) {
         event.preventDefault()

@@ -156,7 +156,9 @@ function buildJs(additions, ctx) {
   var src = additions.concat([
     './tmp/template.js',
     './src/constants.js',
-    './src/adapter.github.js',
+    './src/adapters/adapter.js',
+    './src/adapters/adapter.github.js',
+    './src/adapters/adapter.gitlab.js',
     './src/view.help.js',
     './src/view.error.js',
     './src/view.tree.js',

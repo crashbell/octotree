@@ -1,15 +1,54 @@
 .octotree {
-  .octotree_github_sidebar {
-    a.octotree_toggle {
-      right: 5px;
-      & > span:after {
-        content: '\f0a4';
+  .page-sidebar-expanded {
+    .octotree_gitlab_sidebar {
+      left: 230px;
+      a.octotree_toggle {
+        right: 5px;
+        & > span:after {
+          content: '\f104';
+        }
+      }
+    }
+  }
+
+  .page-sidebar-collapsed {
+    .octotree_gitlab_sidebar {
+      left: 52px;
+      a.octotree_toggle {
+        right: 5px;
+        & > span:after {
+          content: '\f104';
+        }
       }
     }
   }
 }
 
-.octotree_github_sidebar {
+html:not(.octotree) {
+  .page-sidebar-expanded {
+    .octotree_gitlab_sidebar {
+      a.octotree_toggle {
+        right: -264px;
+        transition-duration: none;
+      }
+    }
+  }
+
+  .page-sidebar-collapsed {
+    .octotree_gitlab_sidebar {
+      a.octotree_toggle {
+        right: -85px;
+        transition-duration: .3s;
+      }
+    }
+  }
+}
+
+.octotree_gitlab_sidebar {
+  top: 50px;
+  transition-duration: .3s;
+  padding-top: 62px;
+
   .octotree_views {
     height: 100%;
     overflow: auto;
@@ -22,7 +61,7 @@
       .octotree_view_header {
         width: 100%;
         position: absolute;
-        top: 0;
+        top: 13px;
         left: 0;
         height: 49px;
         font-size: 16px;
@@ -50,8 +89,8 @@
         padding-right: 55px;
       }
       .octotree_header_repo:before {
-        font-family: octicons;
-        content: '\f001';
+        font-family: FontAwesome;
+        content: '\f015';
         color: #bbb;
         margin-right: 6px;
         line-height: 28px;
@@ -66,18 +105,18 @@
         font-size: 11px;
       }
       .octotree_header_branch:before {
-        font-family: octicons;
-        content: '\f020';
+        font-family: FontAwesome;
+        content: '\f126';
         color: #bbb;
         margin-right: 8px;
         margin-left: 3px;
       }
       .jstree-icon.tree:before {
-        content: '\f016';
+        content: '\f07b';
         color: #80a6cd;
       }
       .jstree-icon.blob:before {
-        content: '\f011';
+        content: '\f0f6';
         color: #777;
       }
       .jstree-icon.commit:before {
@@ -116,7 +155,7 @@
       }
 
       .jstree-icon.tree, .jstree-icon.blob, .jstree-icon.commit {
-        font: normal normal 16px octicons;
+        font: normal normal 16px FontAwesome;
         display: inline-block;
         margin-right: 3px;
         text-decoration: none;
@@ -177,13 +216,6 @@
     }
   }
 
-  a.octotree_toggle {
-      right: 5px;
-      & > span:after {
-        content: '\f0a4';
-      }
-    }
-
   a.octotree_toggle, a.octotree_opts {
     position: absolute !important;
     text-align: center;
@@ -205,28 +237,27 @@
   a.octotree_opts {
     width: 15px;
     height: 15px;
-    top: 18px;
+    top: 30px;
     right: 42px;
 
     & > span {
-      font: normal normal 12px octicons;
+      font: normal normal 16px FontAwesome;
     }
     & > span:before {
-      content: '\f031';
+      content: '\f085';
     }
   }
   a.octotree_toggle {
     width: 30px;
     height: 30px;
     padding: 6px 6px !important;
-    top: 9px;
-    right: -35px;
+    top: 22px;
 
     & > span {
-      font: normal normal 16px octicons;
+      font: normal normal 16px FontAwesome;
     }
     & > span:after {
-      content: '\f078';
+      content: '\f105';
     }
     &.octotree_loading {
       & > span:after {

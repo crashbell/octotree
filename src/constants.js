@@ -1,6 +1,9 @@
 const
     PREFIX = 'octotree'
-
+  , DOMAINS = {
+    GITHUB   : 'https://github.com',
+    GITLAB   : 'https://gitlab.com'
+  }
   , STORE = {
     TOKEN    : 'octotree.github_access_token',
     COLLAPSE : 'octotree.collapse',

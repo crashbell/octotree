@@ -40,6 +40,7 @@
     <key>Whitelist</key>
     <array>
       <string>https://github.com/*</string>
+      <string>https://gitlab.com/*</string>
     </array>
 	</dict>
 	<key>Description</key>
