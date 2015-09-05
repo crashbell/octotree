@@ -89,9 +89,11 @@ TreeView.prototype.show = function(repo, token, treeData) {
       return a.type === 'blob' ? 1 : -1
     })
     folder.forEach(function(item) {
-      if (item.type === 'tree') {
-        item.children = true
-      }
+      if (item.type === 'tree')
+        if (item.children.length > 0)
+          sort(item.children)
+        else // loads children later
+          item.children = true
     })
     return folder
   }
@@ -111,7 +113,7 @@ TreeView.prototype.show = function(repo, token, treeData) {
   }
 }
 
-TreeView.prototype.fetchData = function(success) {
+TreeView.prototype.fetchData = function(opts, success) {
   // Dummy func
 }
 
