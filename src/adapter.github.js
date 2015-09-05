@@ -10,7 +10,7 @@ const
   , GH_BRANCH_SEL  = '[aria-label="Switch branches or tags"]'
   , GH_404_SEL          = '#parallax_wrapper'
   , GH_PJAX_SEL         = '#js-repo-pjax-container'
-  , GH_CONTAINERS       = 'body > .container, .header > .container, .site > .container, .repohead > .container'
+  , GH_CONTAINERS       = '.container'
 
 function GitHub() {
   if (!window.MutationObserver) return
@@ -43,9 +43,19 @@ GitHub.prototype.selectSubmodule = function(path) {
 }
 
 /**
+ * Downloads the file at the given
+ */
+GitHub.prototype.downloadFile = function(path, fileName) {
+  var link = document.createElement('a')
+  link.setAttribute('href', path.replace(/\/blob\//, '/raw/'))
+  link.setAttribute('download', fileName)
+  link.click()
+}
+
+/**
  * Selects a path.
  */
-GitHub.prototype.selectPath = function(path, tabSize) {
+GitHub.prototype.selectFile = function(path, tabSize) {
   var container = $(GH_PJAX_SEL)
     , qs = tabSize ? ('?ts=' + tabSize) : ''
 
@@ -75,7 +85,7 @@ GitHub.prototype.updateLayout = function(sidebarVisible, sidebarWidth) {
   }
 
   // falls-back if GitHub DOM has been updated
-  else $('html').css('margin-left', sidebarVisible ? sidebarWidth - spacing : '')
+  else $('html').css('margin-left', sidebarVisible ? sidebarWidth + spacing : '')
 }
 
 /**
