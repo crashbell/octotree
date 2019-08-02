@@ -1,17 +1,14 @@
-* {
-  box-sizing: border-box;
-}
-
 .octotree_sidebar {
   position: fixed !important;
   overflow: visible;
+  box-sizing: border-box;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
   border-right: 1px solid #ddd;
   z-index: 1000001;
-  transition: transform .2s ease;
+  transition: transform 0.2s ease;
   transform: translate3d(-100%, 0, 0);
 
   .ui-resizable-e {
@@ -22,14 +19,46 @@
     top: 0;
     bottom: 0;
   }
+
+  .octotree_bottom {
+    position: absolute;
+    border-top: 1px solid #e1e4e8;
+    border-right: 1px solid #e1e4e8;
+    background-color: #fafbfc;
+    font-size: 11px;
+    line-height: 14px;
+    padding: 5px;
+    bottom: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    color: #6a737d;
+
+    a {
+      color: #6a737d;
+
+      &:hover {
+        color: #0366d6;
+        text-decoration: none;
+
+        .octotree_icon:before {
+          color: #0366d6;
+        }
+      }
+    }
+  }
 }
 
 .octotree_views {
   height: 100%;
   overflow: auto;
+  padding-bottom: 25px;
+  box-sizing: border-box;
 
   .octotree_view {
     display: none;
+    box-sizing: border-box;
 
     &.current {
       display: block;
@@ -45,6 +74,7 @@
       margin: 0;
       text-shadow: 0 1px 0 #fff;
       z-index: 1000002;
+      padding-right: 65px;
     }
 
     .octotree_help {
@@ -57,21 +87,24 @@
   .octotree_treeview {
     .octotree_view_header {
       padding-left: 13px;
+      box-sizing: border-box;
     }
-    .octotree_header_repo, .octotree_header_branch {
+    .octotree_header_repo,
+    .octotree_header_branch {
       width: 100%;
-      padding-right: 55px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      box-sizing: border-box;
     }
     .octotree_header_repo {
       font-weight: bold;
-    }
-    .octotree_header_repo:before {
-      color: #bbb;
-      margin-right: 6px;
-      line-height: 28px;
+
+      &:before {
+        color: #bbb;
+        margin-right: 6px;
+        line-height: 28px;
+      }
     }
     .octotree_header_branch {
       line-height: 1;
@@ -81,10 +114,11 @@
       font-size: 12px;
       margin-top: -6px;
       font-size: 13px;
-    }
-    .octotree_header_branch:before {
-      margin-right: 8px;
-      margin-left: 3px;
+
+      &:before {
+        margin-right: 4px;
+        margin-left: 3px;
+      }
     }
     .jstree-anchor {
       text-decoration: none;
@@ -108,14 +142,19 @@
       }
     }
 
-    .jstree-icon.tree, .jstree-icon.blob, .jstree-icon.commit {
+    .jstree-icon.tree,
+    .jstree-icon.blob,
+    .jstree-icon.commit {
       display: inline-block;
       margin-right: 3px;
       text-decoration: none;
       font-smoothing: antialiased;
     }
-    .jstree-default .jstree-icon, .jstree-default .jstree-icon:empty, .jstree-default .jstree-anchor {
+    .jstree-default .jstree-icon,
+    .jstree-default .jstree-icon:empty,
+    .jstree-default .jstree-anchor {
       line-height: 24px !important;
+      font-style: normal;
     }
   }
 
@@ -143,7 +182,7 @@
   .octotree_optsview {
     .octotree_view_header {
       padding-left: 5px;
-      padding-top: 5px;
+      padding-top: 7px !important;
     }
     & > form {
       margin: 6px;
@@ -161,13 +200,21 @@
       label.disabled {
         color: gray;
       }
-      input[type=text], textarea {
+      input[type='text'],
+      textarea {
         width: 100%;
       }
       textarea {
         resize: vertical;
         height: 60px;
       }
+    }
+
+    .octotree_opts_disclaimer {
+      color: gray;
+      display: block;
+      font-size: 12px;
+      margin-left: 17px;
     }
   }
 }
@@ -178,7 +225,8 @@
   }
 }
 
-a.octotree_toggle, a.octotree_opts {
+a.octotree_toggle,
+a.octotree_opts {
   position: absolute !important;
   text-align: center;
   line-height: 1;
@@ -210,23 +258,27 @@ a.octotree_toggle {
     .loader {
       border-radius: 50%;
       border: 2px solid #000;
-      border-top: 2px solid rgba(0,0,0,0);
-      border-left: 2px solid rgba(0,0,0,0);
+      border-top: 2px solid rgba(0, 0, 0, 0);
+      border-left: 2px solid rgba(0, 0, 0, 0);
       width: 16px;
       height: 16px;
-      animation: loading .5s infinite linear;
+      animation: loading 0.5s infinite linear;
     }
   }
 
   @keyframes loading {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   .popup {
     position: absolute;
     left: 0;
-    top: calc(~"100% + 2px");
+    top: calc(~'100% + 2px');
     cursor: pointer;
     opacity: 0;
     z-index: 1000004;
@@ -235,11 +287,11 @@ a.octotree_toggle {
     text-transform: none;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
     white-space: normal;
-    transition: opacity .3s linear;
+    transition: opacity 0.3s linear;
     font-weight: 400;
     line-height: 20px;
 
@@ -249,7 +301,8 @@ a.octotree_toggle {
     &.show {
       opacity: 1;
     }
-    & > .arrow, & > .arrow:after {
+    & > .arrow,
+    & > .arrow:after {
       position: absolute;
       display: block;
       width: 0;
@@ -263,7 +316,7 @@ a.octotree_toggle {
       border-width: 6px;
       margin-left: -6px;
       border-top-width: 0;
-      border-bottom-color: rgba(0, 0, 0, .25);
+      border-bottom-color: rgba(0, 0, 0, 0.25);
     }
     & > .arrow:after {
       border-width: 5px;
@@ -276,6 +329,39 @@ a.octotree_toggle {
     & > .content {
       padding: 9px 14px;
       font-size: 13px;
+    }
+  }
+}
+
+@media print {
+  a.octotree_toggle {
+    display: none;
+  }
+  .octotree_sidebar {
+    display: none;
+  }
+}
+
+.octotree_bottom {
+  i:before {
+    color: @gray;
+    top: 2px;
+  }
+
+  a:hover i:before {
+    color: @blue;
+  }
+
+  i.support:before {
+    #octicons.heart();
+  }
+
+  i.github {
+    position: relative;
+    top: -1px;
+    margin-right: 3px;
+    &:before {
+      #octicons.mark-github();
     }
   }
 }
